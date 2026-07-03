@@ -91,29 +91,6 @@ Ticker sets are defined separately in `ticker_sets.py`, and `prod` mode fetches 
 
 - All 50 Nifty 50 component tickers are defined in `ticker_sets.py`
 
-## To-do
-
-- Keep the raw fetched data for now; do not filter out rows with `Volume == 0` or drop today's date.
-- Later, add a cleanup step for placeholder rows when needed:
-  - `Open == High == Low == Close`
-  - `Volume == 0`
-  - missing OHLC values
-- Later, consider excluding today's incomplete row from daily OHLCV output.
-
-### Why cleaning is needed
-
-Yahoo Finance / `yfinance` can sometimes return placeholder rows with:
-
-- `Open == High == Low == Close`
-- `Volume == 0`
-- or missing OHLC values
-
-These rows are not valid trading data, so the script now removes them before saving.
-
-### Excluding today
-
-The script also excludes today’s row because intraday or incomplete day data can be partial and should not be used for daily OHLCV analysis.
-
 ## Run the script
 
 ```bash
@@ -134,9 +111,10 @@ If those files already exist, the script will ask whether to overwrite them. Con
 
 ## Notes
 
-- `test` mode fetches a small sample of 2 tickers for quick local validation.
+- `test` mode fetches a small sample of 5 tickers for quick local validation.
 - `prod` mode fetches the current Nifty 50 members from Wikipedia and falls back to a static list if the live fetch fails.
-- The script removes placeholder rows where `Open == High == Low == Close` and `Volume == 0`, and it excludes potentially incomplete today rows.
+- The script removes placeholder rows where `Open == High == Low == Close` and `Volume == 0`.
+- The script also excludes potentially incomplete today rows from the cleaned output.
 
 ## To-do
 
@@ -146,3 +124,11 @@ If those files already exist, the script will ask whether to overwrite them. Con
   - `Volume == 0`
   - missing OHLC values
 - Later, consider excluding today's incomplete row from daily OHLCV output when using historical ranges.
+
+## Repository
+
+This project is published on GitHub at:
+
+- https://github.com/kesavars/trading_data_pipeline-.git
+
+The local branch `main` is tracking `origin/main`.
