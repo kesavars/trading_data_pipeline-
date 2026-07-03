@@ -1,0 +1,8 @@
+.venv/
+nifty50_ohlcv.csv
+nifty50_ohlcv.json
+*_old_output.csv
+*_old_output.json
+*.pyc
+__pycache__/
+.DS_Store
