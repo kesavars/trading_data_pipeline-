@@ -24,12 +24,11 @@ Install dependencies with:
 ```bash
 cd /Users/kesavars/Projects/trading_pipeline/data_sources
 python -m venv .venv
-source .venv/bin/activate
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
 
-> Use the `.venv` environment when running the script. Do not run `python3 fetch_nifty50_ohlcv.py` from the system Python unless you have activated `.venv`.
+> Use the `.venv` environment when running the script. This project’s local `.venv` does not include a shell `activate` script, so run the script directly with `.venv/bin/python`.
 
 ### Windows setup
 
@@ -45,8 +44,13 @@ Run the script with:
 
 ```bash
 cd /Users/kesavars/Projects/trading_pipeline/data_sources
-source .venv/bin/activate
-python fetch_nifty50_ohlcv.py
+.venv/bin/python fetch_nifty50_ohlcv.py
+```
+
+If activation is unavailable on macOS/Linux, use:
+
+```bash
+.venv/bin/python fetch_nifty50_ohlcv.py
 ```
 
 On Windows:
